@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Translator</title>
+</head>
+<body>
+    <h2>Translate a Video</h2>
+    <form method="post" enctype="multipart/form-data">
+        <label>Select Input Type:</label><br>
+        <input type="radio" name="input_type" value="youtube" checked> YouTube URL<br>
+        <input type="radio" name="input_type" value="upload"> Upload File<br><br>
+
+        <div id="youtube_input">
+            <input type="text" name="youtube_url" placeholder="Enter YouTube URL" required>
+        </div>
+
+        <div id="file_input" style="display: none;">
+            <input type="file" name="video_file">
+        </div>
+
+        <p>Select Target Languages:</p>
+        <label><input type="checkbox" name="languages" value="kn"> Kannada</label><br>
+        <label><input type="checkbox" name="languages" value="hi"> Hindi</label><br>
+        <label><input type="checkbox" name="languages" value="ta"> Tamil</label><br>
+        <label><input type="checkbox" name="languages" value="te"> Telugu</label><br>
+        <label><input type="checkbox" name="languages" value="ml"> Malayalam</label><br><br>
+
+        <input type="submit" value="Process Video">
+    </form>
+
+    <script>
+        const ytRadio = document.querySelector('input[value="youtube"]');
+        const fileRadio = document.querySelector('input[value="upload"]');
+        const ytInput = document.getElementById('youtube_input');
+        const fileInput = document.getElementById('file_input');
+
+        ytRadio.addEventListener('change', () => {
+            ytInput.style.display = 'block';
+            fileInput.style.display = 'none';
+        });
+
+        fileRadio.addEventListener('change', () => {
+            ytInput.style.display = 'none';
+            fileInput.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
